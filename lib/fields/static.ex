@@ -41,6 +41,7 @@ defmodule EctoFields.Static do
     quote do
       defmodule unquote(module) do
         @behaviour Ecto.Type
+        @type t :: String.t()
 
         def type, do: :string
 

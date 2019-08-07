@@ -1,5 +1,7 @@
 defmodule EctoFields.IP do
   @behaviour Ecto.Type
+  @type t :: String.t()
+
   def type, do: :string
 
   @doc """

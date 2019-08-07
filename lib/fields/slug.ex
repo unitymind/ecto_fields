@@ -1,5 +1,7 @@
 defmodule EctoFields.Slug do
   @behaviour Ecto.Type
+  @type t :: String.t()
+
   def type, do: :string
 
   @doc """
@@ -14,12 +16,13 @@ defmodule EctoFields.Slug do
       {:ok, "from-the-naughty-strings-list"}
   """
   def cast(title) when is_binary(title) and byte_size(title) > 0 do
-    slug = title
-    |> String.normalize(:nfd)
-    |> String.downcase
-    |> String.replace(~r/[^a-z\s]/u, "")
-    |> String.replace(~r/\s+/, "-")
-    |> String.replace(~r/^\-*(.*?)\-*$/, "\\1")
+    slug =
+      title
+      |> String.normalize(:nfd)
+      |> String.downcase()
+      |> String.replace(~r/[^a-z\s]/u, "")
+      |> String.replace(~r/\s+/, "-")
+      |> String.replace(~r/^\-*(.*?)\-*$/, "\\1")
 
     {:ok, slug}
   end

@@ -16,6 +16,7 @@ defmodule EctoFields.Atom do
       {:ok, nil}
   """
   @behaviour Ecto.Type
+  @type t :: atom()
 
   @max_atom_length 0xFF
 

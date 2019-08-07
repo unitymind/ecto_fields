@@ -1,5 +1,7 @@
 defmodule EctoFields.PositiveInteger do
   @behaviour Ecto.Type
+  @type t :: integer()
+
   def type, do: :integer
 
   @doc """
